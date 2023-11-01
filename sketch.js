@@ -43,7 +43,24 @@ function mousePressed() {
 }
 
 //shovel constructor
+function shovel() {
+	this.draw = function() {
+		fill(150);
+		rect(mouseX - 10, mouseY - 30, 20, 60);
+	}
 
+	this.hitZombies = function(zombies) {
+		for (var i = zombies.lenght - 1; i >= 0; 1--) {
+			if(zombies[i].isHit(mouseX, mouseY)) {
+				zombies[i].health -= 10;
+				if (zombies[i].health <= 0) {
+					zombies.splice(i, 1);
+				}
+				break;
+			}
+		}
+	}
+}
 //Constructor for the horde
 function Horde() {
 	//an array of zombies
@@ -74,6 +91,11 @@ function zombie(y) {
 	this.speed = random(0.2, 0.5);
 
 	this.health = 100;
+
+	this.isHit = function(x, y) {
+		var d = dist(x, y, this.x, this.y);
+		return d < 25;
+	}
 
 	//draw the zombie to the screen
 	this.draw = function() {
