@@ -19,6 +19,7 @@ for as long as possible.
 
 //variable to store the zombie horde
 var horde;
+var shovel;
 
 function setup() {
 	createCanvas(800, 600);
@@ -26,14 +27,22 @@ function setup() {
 	//create a new horde and add zombies
 	horde = new Horde();
 	horde.addZombies(7);
+	shovel = new shovel();
 
 }
 
 function draw() {
 	background(77, 112, 107);
 	this.horde.drawZombies();
+	shovel.draw();
 
 }
+
+function mousePressed() {
+	shovel.hitZombies(horde.zombies);
+}
+
+//shovel constructor
 
 //Constructor for the horde
 function Horde() {
@@ -63,6 +72,8 @@ function zombie(y) {
 	this.y = y;
 	//set a random speed
 	this.speed = random(0.2, 0.5);
+
+	this.health = 100;
 
 	//draw the zombie to the screen
 	this.draw = function() {
