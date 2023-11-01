@@ -2,7 +2,14 @@
 function Shovel() {
 	this.draw = function() {
 		fill(150);
-		rect(mouseX - 10, mouseY - 30, 20, 60);
+		rect(mouseX - 5, mouseY - 30, 10, 80);
+        fill(200);
+        beginShape();
+        vertex(mouseX - 15, mouseY - 30);
+        vertex(mouseX + 15, mouseY - 30);
+        vertex(mouseX + 20, mouseY - 50);
+        vertex(mouseX - 20, mouseY - 50);
+        endShape(CLOSE);
 	}
 
 	this.hitZombies = function(zombies) {
