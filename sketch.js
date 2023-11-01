@@ -20,26 +20,28 @@ for as long as possible.
 //variable to store the zombie horde
 var horde;
 var shovel;
+var shotgun;
 
 function setup() {
-	createCanvas(800, 600);
+    createCanvas(800, 600);
 
-	//create a new horde and add zombies
-	horde = new Horde();
-	horde.addZombies(7);
-	shovel = new Shovel();
-
+    // create a new horde and add zombies
+    horde = new Horde();
+    horde.addZombies(7);
+    shovel = new Shovel();
+    shotgun = new Shotgun();
 }
 
 function draw() {
-	background(77, 112, 107);
-	this.horde.drawZombies();
-	shovel.draw();
-
+    background(77, 112, 107);
+    horde.drawZombies();
+    shovel.draw();
+    shotgun.draw();
 }
 
 function mousePressed() {
-	shovel.hitZombies(horde.zombies);
+    shovel.hitZombies(horde.zombies);
+    shotgun.fire(horde.zombies);
 }
 
 

@@ -13,7 +13,7 @@ function Shovel() {
         vertex(mouseX - 20, mouseY - 50);
         endShape(CLOSE);
 
-        for (let i = this.sparks.lenght - 1; i >= 0; i --) {
+        for (let i = this.sparks.length - 1; i >= 0; i --) {
             let spark = this.sparks[i];
             fill(spark.color);
             ellipse(spark.x, spark.y, spark.size);
