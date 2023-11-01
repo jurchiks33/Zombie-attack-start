@@ -31,6 +31,19 @@ function Shovel() {
 		for (var i = zombies.length - 1; i >= 0; i--) {
 			if (zombies[i].isHit(mouseX, mouseY)) {
 				zombies[i].health -= 10;
+
+                for (let j = 0; j < 20; j++) {
+                    this.sparks.push({
+                        x: mouseX,
+                        y: mouseY,
+                        vx: random(-2, 2),
+                        vy: random(-2, 2),
+                        size: random(5, 10),
+                        color:color(random(200, 255), random(200, 255), 0),
+                        gravity: 0.1
+                    })
+                }
+
 				if (zombies[i].health <= 0) {
 					zombies.splice(i, 1);
 					horde.addZombies(1); // Add a new zombie when one is killed
