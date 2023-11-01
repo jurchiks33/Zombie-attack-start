@@ -27,7 +27,7 @@ function setup() {
 	//create a new horde and add zombies
 	horde = new Horde();
 	horde.addZombies(7);
-	shovel = new shovel();
+	shovel = new Shovel();
 
 }
 
@@ -43,18 +43,19 @@ function mousePressed() {
 }
 
 //shovel constructor
-function shovel() {
+function Shovel() {
 	this.draw = function() {
 		fill(150);
 		rect(mouseX - 10, mouseY - 30, 20, 60);
 	}
 
 	this.hitZombies = function(zombies) {
-		for (var i = zombies.lenght - 1; i >= 0; 1--) {
-			if(zombies[i].isHit(mouseX, mouseY)) {
+		for (var i = zombies.length - 1; i >= 0; i--) {
+			if (zombies[i].isHit(mouseX, mouseY)) {
 				zombies[i].health -= 10;
 				if (zombies[i].health <= 0) {
 					zombies.splice(i, 1);
+					horde.addZombies(1); // Add a new zombie when one is killed
 				}
 				break;
 			}
@@ -90,7 +91,7 @@ function zombie(y) {
 	//set a random speed
 	this.speed = random(0.2, 0.5);
 
-	this.health = 100;
+	this.health = 1;
 
 	this.isHit = function(x, y) {
 		var d = dist(x, y, this.x, this.y);
