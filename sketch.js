@@ -18,6 +18,7 @@ for as long as possible.
 */
 
 //variable to store the zombie horde
+var killedZombiesCount = 0;
 var horde;
 var shovel;
 var shotgun;
@@ -55,6 +56,10 @@ function draw() {
         fill(0, 255, 0);
         rect(width - 60, 120, 50, 50);
     }
+        // Display the kill count
+        fill(255); 
+        textSize(20); 
+        text("Killed Zombies: " + killedZombiesCount, 10, 30);
 }
 
 function mousePressed() {

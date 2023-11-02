@@ -28,10 +28,10 @@ function Shotgun() {
     };
 
     this.createSparks = function() {
-        for (let i = 0; i < 80; i++) {  // Increase the number of sparks for a wider spread
-            const angle = random(-PI / 4, PI / 4);  // Increase the angle range for a wider spread
-            const speed = random(2, 5);
-            const vx = -speed * cos(angle);  // Negative velocity for left direction
+        for (let i = 0; i < 80; i++) { // Increased number of sparks
+            const angle = random(-PI / 4, PI / 4); // Wider spread of sparks
+            const speed = random(6, 20); // Increased speed of sparks
+            const vx = -speed * cos(angle); // Negative velocity for left direction
             const vy = speed * sin(angle);
     
             this.sparks.push({
@@ -54,27 +54,15 @@ function Shotgun() {
             let zombie = zombies[i];
             let d = dist(mouseX, mouseY, zombie.x, zombie.y);
 
-            let coneLength = 6 * 37.7952; // 4 cm to pixels
-            let coneWidth = 3 * 37.7952;  // 3 cm to pixels
+            let coneLength = 6 * 37.7952; // Increased cone length
+            let coneWidth = 3 * 37.7952; 
 
             if (d < coneLength) {
-                let angle = atan2(zombie.y - mouseY, zombie.x - mouseX);
-                for (let j = 0; j < 10; j++) {
-                    this.sparks.push({
-                        x: mouseX,
-                        y: mouseY,
-                        vx: coneLength * cos(angle) * random(0.8, 1.2),
-                        vy: coneWidth * sin(angle) * random(0.8, 1.2),
-                        size: random(5, 10),
-                        color: color(255, 0, 0, 150),
-                        gravity: 0.1
-                    });
-                }
-
                 zombie.health -= 50;
                 if (zombie.health <= 0) {
                     zombies.splice(i, 1);
                     horde.addZombies(1);
+                    killedZombiesCount += 1; // Increase the killed zombies count
                 }
             }
         }
