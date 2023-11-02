@@ -43,6 +43,18 @@ function draw() {
     background(77, 112, 107);
     horde.drawZombies();
     currentWeapon.draw();
+
+    Fill(255);
+    rect(10, 50, 50, 50);
+    rect(10, 120, 50, 50);
+
+    if (currentWeapon === shovel) {
+        fill(0, 255, 0);
+        rect(10, 50, 50, 50);
+    } else if (currentWeapon === shotgun) {
+        fill(0, 255, 0);
+        rect(10, 120, 50, 50);
+    }
 }
 
 function mousePressed() {
