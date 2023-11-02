@@ -21,6 +21,8 @@ for as long as possible.
 var horde;
 var shovel;
 var shotgun;
+var currentWeapon;
+var weapons [];
 
 function setup() {
     createCanvas(800, 600);
@@ -30,13 +32,17 @@ function setup() {
     horde.addZombies(7);
     shovel = new Shovel();
     shotgun = new Shotgun();
+
+    weapons.shovel = shovel;
+    weapons.shotgun = shotgun;
+
+    currentWeapon = shovel;
 }
 
 function draw() {
     background(77, 112, 107);
     horde.drawZombies();
-    shovel.draw();
-    shotgun.draw();
+    currentWeapon.draw();
 }
 
 function mousePressed() {
