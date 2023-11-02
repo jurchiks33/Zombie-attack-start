@@ -28,12 +28,11 @@ function Shotgun() {
     };
 
     this.createSparks = function() {
-        for (let i = 0; i < 80; i++) { // Increased number of sparks
-            const angle = random(-PI / 4, PI / 4); // Wider spread of sparks
-            const speed = random(6, 20); // Increased speed of sparks
-            const vx = -speed * cos(angle); // Negative velocity for left direction
+        for (let i = 0; i < 80; i++) {
+            const angle = random(-PI / 4, PI / 4);
+            const speed = random(6, 20);
+            const vx = -speed * cos(angle);
             const vy = speed * sin(angle);
-    
             this.sparks.push({
                 x: mouseX,
                 y: mouseY,
@@ -47,22 +46,23 @@ function Shotgun() {
     };
 
     this.fire = function(zombies) {
-        // Create sparks on firing
         this.createSparks();
 
         for (let i = zombies.length - 1; i >= 0; i--) {
             let zombie = zombies[i];
             let d = dist(mouseX, mouseY, zombie.x, zombie.y);
-
-            let coneLength = 6 * 37.7952; // Increased cone length
+            let coneLength = 6 * 37.7952;
             let coneWidth = 3 * 37.7952; 
 
             if (d < coneLength) {
                 zombie.health -= 50;
                 if (zombie.health <= 0) {
                     zombies.splice(i, 1);
+                    killedZombiesCount++;
+                    if (killedZombiesCount % 10 === 0) {
+                        zombiesToSpawn++;
+                    }
                     horde.addZombies(1);
-                    killedZombiesCount += 1; // Increase the killed zombies count
                 }
             }
         }

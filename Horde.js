@@ -12,9 +12,9 @@ function Horde() {
 	}
 
 	//add n zombies to the horde
-	this.addZombies = function(n) {
-		for (var i = 0; i < n; i++) {
-			this.zombies.push(new zombie(random(20, height - 50)))
+	this.addZombies = function(number) {
+		for (let i = 0; i < number; i++) {
+			this.zombies.push(new zombie(random(width), random(height)));
 		}
-	}
+	};
 }

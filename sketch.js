@@ -24,6 +24,7 @@ var shovel;
 var shotgun;
 var currentWeapon;
 var weapons = {};
+var zombiesToSpawn = 7;
 
 function setup() {
     createCanvas(800, 600);
@@ -38,6 +39,8 @@ function setup() {
     weapons.shotgun = shotgun;
 
     currentWeapon = shovel;
+
+    horde.addZombies(zombiesToSpawn);
 }
 
 function draw() {
