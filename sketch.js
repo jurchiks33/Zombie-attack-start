@@ -58,15 +58,21 @@ function draw() {
 }
 
 function mousePressed() {
-    if (mouseX > width - 60 && mouseX < width - 10 && mouseY > 50 && mouseY < 100) {
-        currentWeapon = shovel;
-    } else if (mouseX > width - 60 && mouseX < width - 10 && mouseY > 120 && mouseY < 170) {
-        currentWeapon = shotgun;
+    // Check if the user clicked on the weapon switch buttons
+    if (mouseX > width - 60 && mouseX < width - 10) {
+        if (mouseY > 50 && mouseY < 100) {
+            currentWeapon = weapons.shovel;
+        } else if (mouseY > 120 && mouseY < 170) {
+            currentWeapon = weapons.shotgun;
+        }
     } else {
-        if (currentWeapon === shovel) {
-            shovel.hitZombies(horde.zombies);
-        } else if (currentWeapon === shotgun) {
-            shotgun.fire(horde.zombies);
+        // Allow the shotgun to fire anywhere on the screen,
+        // but zombies will only be damaged if they are in range
+        if (currentWeapon === weapons.shovel) {
+            weapons.shovel.hitZombies(horde.zombies);
+        } else if (currentWeapon === weapons.shotgun) {
+            weapons.shotgun.fire(horde.zombies);
+            weapons.shotgun.createSparks();
         }
     }
 }
