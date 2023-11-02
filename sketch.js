@@ -22,7 +22,7 @@ var horde;
 var shovel;
 var shotgun;
 var currentWeapon;
-var weapons [];
+var weapons = {};
 
 function setup() {
     createCanvas(800, 600);
@@ -44,7 +44,7 @@ function draw() {
     horde.drawZombies();
     currentWeapon.draw();
 
-    Fill(255);
+    fill(255);
     rect(10, 50, 50, 50);
     rect(10, 120, 50, 50);
 
