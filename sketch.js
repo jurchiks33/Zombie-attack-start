@@ -58,8 +58,17 @@ function draw() {
 }
 
 function mousePressed() {
-    shovel.hitZombies(horde.zombies);
-    shotgun.fire(horde.zombies);
+    if (mouseX > 10 && mouseX < 60 && mouseY > 50 && mouseY < 100) {
+        currentWeapon = shovel;
+    } else if (mouseX > 10 && mouseX < 60 && mouseY > 120 && mouseY < 170) {
+        currentWeapon = shotgun;
+    } else {
+        if (currentWeapon === shovel) {
+            shovel.hitZombies(horde.zombies);
+        } else if (currentWeapon === shotgun) {
+            shotgun.fire(horde.zombies);
+        }
+    }
 }
 
 
