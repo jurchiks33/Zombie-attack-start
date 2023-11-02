@@ -45,22 +45,22 @@ function draw() {
     currentWeapon.draw();
 
     fill(255);
-    rect(10, 50, 50, 50);
-    rect(10, 120, 50, 50);
+    rect(width - 60, 50, 50, 50);
+    rect(width - 60, 120, 50, 50);
 
     if (currentWeapon === shovel) {
         fill(0, 255, 0);
-        rect(10, 50, 50, 50);
+        rect(width - 60, 50, 50, 50);
     } else if (currentWeapon === shotgun) {
         fill(0, 255, 0);
-        rect(10, 120, 50, 50);
+        rect(width - 60, 120, 50, 50);
     }
 }
 
 function mousePressed() {
-    if (mouseX > 10 && mouseX < 60 && mouseY > 50 && mouseY < 100) {
+    if (mouseX > width - 60 && mouseX < width - 10 && mouseY > 50 && mouseY < 100) {
         currentWeapon = shovel;
-    } else if (mouseX > 10 && mouseX < 60 && mouseY > 120 && mouseY < 170) {
+    } else if (mouseX > width - 60 && mouseX < width - 10 && mouseY > 120 && mouseY < 170) {
         currentWeapon = shotgun;
     } else {
         if (currentWeapon === shovel) {

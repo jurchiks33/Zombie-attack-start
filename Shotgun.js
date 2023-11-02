@@ -2,12 +2,10 @@ function Shotgun() {
     this.draw = function() {
         push();
         translate(mouseX, mouseY);
-        let angle = atan2(mouseY - height / 2, mouseX - width / 2);
-        rotate(angle);
         fill(100);
         rect(-10, -30, 20, 100);
         fill(150);
-        ellipse(0, -30, 30, 10);
+        ellipse(-10, -30, 30, 10);
         pop();
     }
 
